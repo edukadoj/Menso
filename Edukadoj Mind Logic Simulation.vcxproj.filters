@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Common Files\Button.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Clipboard.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Common.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Context.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Devcon.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Draw.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\EditBox.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\File.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\General.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Page.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Picture.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Processes.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\ProgressReport.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Scroll.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\StaticText.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\String.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\WFile.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Window.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\WindowsPaths.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\Write.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common Files\WString.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Add.cpp" />
+    <ClCompile Include="AnalyzingKind.cpp" />
+    <ClCompile Include="AnalyzingMenso.cpp" />
+    <ClCompile Include="Check.cpp" />
+    <ClCompile Include="CheckingMenso.cpp" />
+    <ClCompile Include="CheckingName.cpp" />
+    <ClCompile Include="Decompose.cpp" />
+    <ClCompile Include="Define.cpp" />
+    <ClCompile Include="EduMenso.cpp" />
+    <ClCompile Include="GetNthDeco.cpp" />
+    <ClCompile Include="List.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainLists.cpp" />
+    <ClCompile Include="MensoCmp.cpp" />
+    <ClCompile Include="New.cpp" />
+    <ClCompile Include="Pick.cpp" />
+    <ClCompile Include="ReadingKind.cpp" />
+    <ClCompile Include="ReadingMenso.cpp" />
+    <ClCompile Include="Replace.cpp" />
+    <ClCompile Include="ReplaceMenso.cpp" />
+    <ClCompile Include="ReplaceWithIn.cpp" />
+    <ClCompile Include="Select.cpp" />
+    <ClCompile Include="Set.cpp" />
+    <ClCompile Include="Space.cpp" />
+    <ClCompile Include="Suppose.cpp" />
+    <ClCompile Include="Thing.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common Files\Button.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Clipboard.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Common.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Context.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Devcon.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Draw.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\EditBox.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\File.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\General.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Page.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Picture.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Processes.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\ProgressReport.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Scroll.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\StaticText.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\String.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\WFile.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Window.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\WindowsPaths.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\Write.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common Files\WString.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Add.h" />
+    <ClInclude Include="AnalyzingKind.h" />
+    <ClInclude Include="AnalyzingMenso.h" />
+    <ClInclude Include="Check.h" />
+    <ClInclude Include="CheckingMenso.h" />
+    <ClInclude Include="CheckingName.h" />
+    <ClInclude Include="Decompose.h" />
+    <ClInclude Include="Define.h" />
+    <ClInclude Include="EduMenso.h" />
+    <ClInclude Include="GetNthDeco.h" />
+    <ClInclude Include="List.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="MainLists.h" />
+    <ClInclude Include="MensoCmp.h" />
+    <ClInclude Include="New.h" />
+    <ClInclude Include="Pick.h" />
+    <ClInclude Include="ReadingKind.h" />
+    <ClInclude Include="ReadingMenso.h" />
+    <ClInclude Include="Replace.h" />
+    <ClInclude Include="ReplaceMenso.h" />
+    <ClInclude Include="ReplaceWithIn.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Select.h" />
+    <ClInclude Include="Set.h" />
+    <ClInclude Include="Space.h" />
+    <ClInclude Include="Suppose.h" />
+    <ClInclude Include="Thing.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common Files">
+      <UniqueIdentifier>{fd1b7e35-79df-4fc8-9a20-36692256692a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="menso.ico" />
+  </ItemGroup>
+</Project>

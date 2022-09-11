@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6748410F-01F3-4135-AF74-227FDD002CA4}</ProjectGuid>
+    <RootNamespace>MRKTack</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Edukadoj Mind Logic Simulation</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <PreventDllBinding>
+      </PreventDllBinding>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <PreventDllBinding>
+      </PreventDllBinding>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Add.cpp" />
+    <ClCompile Include="AnalyzingKind.cpp" />
+    <ClCompile Include="AnalyzingMenso.cpp" />
+    <ClCompile Include="Check.cpp" />
+    <ClCompile Include="CheckingMenso.cpp" />
+    <ClCompile Include="CheckingName.cpp" />
+    <ClCompile Include="Common Files\Button.cpp" />
+    <ClCompile Include="Common Files\Clipboard.cpp" />
+    <ClCompile Include="Common Files\Common.cpp" />
+    <ClCompile Include="Common Files\Context.cpp" />
+    <ClCompile Include="Common Files\Devcon.cpp" />
+    <ClCompile Include="Common Files\Draw.cpp" />
+    <ClCompile Include="Common Files\EditBox.cpp" />
+    <ClCompile Include="Common Files\File.cpp" />
+    <ClCompile Include="Common Files\General.cpp" />
+    <ClCompile Include="Common Files\Page.cpp" />
+    <ClCompile Include="Common Files\Picture.cpp" />
+    <ClCompile Include="Common Files\Processes.cpp" />
+    <ClCompile Include="Common Files\ProgressReport.cpp" />
+    <ClCompile Include="Common Files\Scroll.cpp" />
+    <ClCompile Include="Common Files\StaticText.cpp" />
+    <ClCompile Include="Common Files\String.cpp" />
+    <ClCompile Include="Common Files\WFile.cpp" />
+    <ClCompile Include="Common Files\Window.cpp" />
+    <ClCompile Include="Common Files\WindowsPaths.cpp" />
+    <ClCompile Include="Common Files\Write.cpp" />
+    <ClCompile Include="Common Files\WString.cpp" />
+    <ClCompile Include="Decompose.cpp" />
+    <ClCompile Include="Define.cpp" />
+    <ClCompile Include="EduMenso.cpp" />
+    <ClCompile Include="GetNthDeco.cpp" />
+    <ClCompile Include="List.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainLists.cpp" />
+    <ClCompile Include="MensoCmp.cpp" />
+    <ClCompile Include="New.cpp" />
+    <ClCompile Include="Pick.cpp" />
+    <ClCompile Include="ReadingKind.cpp" />
+    <ClCompile Include="ReadingMenso.cpp" />
+    <ClCompile Include="Replace.cpp" />
+    <ClCompile Include="ReplaceMenso.cpp" />
+    <ClCompile Include="ReplaceWithIn.cpp" />
+    <ClCompile Include="Select.cpp" />
+    <ClCompile Include="Set.cpp" />
+    <ClCompile Include="Space.cpp" />
+    <ClCompile Include="Suppose.cpp" />
+    <ClCompile Include="Thing.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Add.h" />
+    <ClInclude Include="AnalyzingKind.h" />
+    <ClInclude Include="AnalyzingMenso.h" />
+    <ClInclude Include="Check.h" />
+    <ClInclude Include="CheckingMenso.h" />
+    <ClInclude Include="CheckingName.h" />
+    <ClInclude Include="Common Files\Button.h" />
+    <ClInclude Include="Common Files\Clipboard.h" />
+    <ClInclude Include="Common Files\Common.h" />
+    <ClInclude Include="Common Files\Context.h" />
+    <ClInclude Include="Common Files\Devcon.h" />
+    <ClInclude Include="Common Files\Draw.h" />
+    <ClInclude Include="Common Files\EditBox.h" />
+    <ClInclude Include="Common Files\File.h" />
+    <ClInclude Include="Common Files\General.h" />
+    <ClInclude Include="Common Files\Page.h" />
+    <ClInclude Include="Common Files\Picture.h" />
+    <ClInclude Include="Common Files\Processes.h" />
+    <ClInclude Include="Common Files\ProgressReport.h" />
+    <ClInclude Include="Common Files\Scroll.h" />
+    <ClInclude Include="Common Files\StaticText.h" />
+    <ClInclude Include="Common Files\String.h" />
+    <ClInclude Include="Common Files\WFile.h" />
+    <ClInclude Include="Common Files\Window.h" />
+    <ClInclude Include="Common Files\WindowsPaths.h" />
+    <ClInclude Include="Common Files\Write.h" />
+    <ClInclude Include="Common Files\WString.h" />
+    <ClInclude Include="Decompose.h" />
+    <ClInclude Include="Define.h" />
+    <ClInclude Include="EduMenso.h" />
+    <ClInclude Include="GetNthDeco.h" />
+    <ClInclude Include="List.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="MainLists.h" />
+    <ClInclude Include="MensoCmp.h" />
+    <ClInclude Include="New.h" />
+    <ClInclude Include="Pick.h" />
+    <ClInclude Include="ReadingKind.h" />
+    <ClInclude Include="ReadingMenso.h" />
+    <ClInclude Include="Replace.h" />
+    <ClInclude Include="ReplaceMenso.h" />
+    <ClInclude Include="ReplaceWithIn.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Select.h" />
+    <ClInclude Include="Set.h" />
+    <ClInclude Include="Space.h" />
+    <ClInclude Include="Suppose.h" />
+    <ClInclude Include="Thing.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="menso.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
