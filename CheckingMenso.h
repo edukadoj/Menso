@@ -43,6 +43,24 @@ public:
         return false;
     }
 
+    bool CanBeDeducedFromTruthList(String menso)
+    {
+        MensoCmp MC(ML);
+
+        Unsigned size = ML.truths.Size();
+        if (1 <= size)
+            for (Unsigned i = size - 1; i != MAXUnsigned; i--)
+            {
+                AnalyzingMenso AM(ML, ML.truths[i]);
+                if (AM.if_type)
+                {
+                    if (MC.Equal(menso, Negate(AM.part1)) && IsTrue(Negate(AM.part2)))
+                        return true;
+                }
+            }
+        return false;
+    }
+
     bool IsTrue(const String& menso)
     {
         List forbidden_list;
@@ -55,6 +73,8 @@ public:
             return false;
         forbidden_list << menso;
         if (EqualsSomethingInTruthList(menso))
+            return true;
+        if (CanBeDeducedFromTruthList(menso))
             return true;
 
         MensoCmp MC(ML);
