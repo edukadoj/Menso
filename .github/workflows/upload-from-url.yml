@@ -1,0 +1,29 @@
+name: Download and Commit File
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_url:
+        description: 'URL of the file to download'
+        required: true
+      file_name:
+        description: 'Name to save the file as'
+        required: true
+
+jobs:
+  download-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download file from URL
+        run: curl -L "${{ github.event.inputs.file_url }}" -o "${{ github.event.inputs.file_name }}"
+
+      - name: Commit and push file
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${{ github.event.inputs.file_name }}"
+          git commit -m "Add ${{ github.event.inputs.file_name }} from URL"
+          git push
