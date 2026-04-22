@@ -1,4 +1,4 @@
-name: Download and Commit File
+name: Download and Upload via API
 
 on:
   workflow_dispatch:
@@ -6,24 +6,48 @@ on:
       file_url:
         description: 'URL of the file to download'
         required: true
-      file_name:
-        description: 'Name to save the file as'
+      file_path:
+        description: 'Path in repo to save (e.g., folder/file.exe)'
         required: true
 
 jobs:
-  download-and-commit:
+  upload-via-api:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Download file from URL
-        run: curl -L "${{ github.event.inputs.file_url }}" -o "${{ github.event.inputs.file_name }}"
-
-      - name: Commit and push file
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add "${{ github.event.inputs.file_name }}"
-          git commit -m "Add ${{ github.event.inputs.file_name }} from URL"
-          git push
+          curl -L "${{ github.event.inputs.file_url }}" -o downloaded_file
+
+      - name: Upload to GitHub via API
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Encode file content as base64
+          CONTENT_BASE64=$(base64 -w 0 downloaded_file)
+
+          # Construct API URL for the target file path
+          API_URL="https://api.github.com/repos/${{ github.repository }}/contents/${{ github.event.inputs.file_path }}"
+
+          # Check if file already exists to get its SHA (required for updates)
+          SHA=$(gh api "$API_URL" --jq '.sha' 2>/dev/null || echo "")
+
+          # Prepare JSON payload
+          if [ -z "$SHA" ]; then
+            # Creating new file
+            JSON_PAYLOAD=$(jq -n \
+              --arg message "Add file from URL" \
+              --arg content "$CONTENT_BASE64" \
+              --arg branch "${{ github.ref_name }}" \
+              '{message: $message, content: $content, branch: $branch}')
+          else
+            # Updating existing file
+            JSON_PAYLOAD=$(jq -n \
+              --arg message "Update file from URL" \
+              --arg content "$CONTENT_BASE64" \
+              --arg sha "$SHA" \
+              --arg branch "${{ github.ref_name }}" \
+              '{message: $message, content: $content, sha: $sha, branch: $branch}')
+          fi
+
+          # Make the API request
+          echo "$JSON_PAYLOAD" | gh api --method PUT "$API_URL" --input -
