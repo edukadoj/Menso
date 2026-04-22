@@ -7,41 +7,39 @@ on:
         description: 'URL of the file to download'
         required: true
       file_path:
-        description: 'Path in repo to save (e.g., folder/file.exe)'
+        description: 'Path in repo (e.g., folder/file.exe)'
         required: true
 
 jobs:
-  upload-via-api:
+  upload:
     runs-on: ubuntu-latest
     steps:
-      - name: Download file from URL
+      - name: Download file
         run: |
-          curl -L "${{ github.event.inputs.file_url }}" -o downloaded_file
+          curl -L "${{ github.event.inputs.file_url }}" -o file.bin
 
-      - name: Upload to GitHub via API
+      - name: Upload to GitHub using REST API
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Encode file content as base64
-          CONTENT_BASE64=$(base64 -w 0 downloaded_file)
+          # Convert file to base64 (required by GitHub API)
+          CONTENT_BASE64=$(base64 -w 0 file.bin)
 
-          # Construct API URL for the target file path
+          # API endpoint for the file
           API_URL="https://api.github.com/repos/${{ github.repository }}/contents/${{ github.event.inputs.file_path }}"
 
-          # Check if file already exists to get its SHA (required for updates)
-          SHA=$(gh api "$API_URL" --jq '.sha' 2>/dev/null || echo "")
+          # Check if file exists to get its SHA (required for updates)
+          SHA=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "$API_URL" | jq -r '.sha // ""')
 
-          # Prepare JSON payload
+          # Build JSON payload
           if [ -z "$SHA" ]; then
-            # Creating new file
-            JSON_PAYLOAD=$(jq -n \
+            JSON=$(jq -n \
               --arg message "Add file from URL" \
               --arg content "$CONTENT_BASE64" \
               --arg branch "${{ github.ref_name }}" \
               '{message: $message, content: $content, branch: $branch}')
           else
-            # Updating existing file
-            JSON_PAYLOAD=$(jq -n \
+            JSON=$(jq -n \
               --arg message "Update file from URL" \
               --arg content "$CONTENT_BASE64" \
               --arg sha "$SHA" \
@@ -49,5 +47,9 @@ jobs:
               '{message: $message, content: $content, sha: $sha, branch: $branch}')
           fi
 
-          # Make the API request
-          echo "$JSON_PAYLOAD" | gh api --method PUT "$API_URL" --input -
+          # Upload the file
+          curl -X PUT \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$JSON" \
+            "$API_URL"
