@@ -6,15 +6,18 @@ on:
       file_url:
         description: 'URL of the file to download'
         required: true
+        default: 'https://download.visualstudio.microsoft.com/download/pr/7f4d5cbc-4449-4ea5-9578-c467821f251f/b9b19f89d0642bf78f4b612c6a741637/dotnet-runtime-8.0.0-win-x64.exe'
       file_path:
-        description: 'Path in repo (e.g., folder/file.exe)'
+        description: 'Path in repo (e.g., folder/file.exe) - USE FORWARD SLASHES'
         required: true
+
+env:
+  # This hides the Node.js 20 warning you saw
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   upload:
     runs-on: ubuntu-latest
-    
-    # Required to allow the Action to push to the repo
     permissions:
       contents: write 
 
@@ -24,11 +27,16 @@ jobs:
 
       - name: Download file
         run: |
-          # Create the target directory if it doesn't exist
+          echo "Target path: ${{ github.event.inputs.file_path }}"
+          
+          # Create directory
           mkdir -p "$(dirname "${{ github.event.inputs.file_path }}")"
           
-          # Download directly to the target path
-          curl -L "${{ github.event.inputs.file_url }}" -o "${{ github.event.inputs.file_path }}"
+          # Download file
+          curl -L -f "${{ github.event.inputs.file_url }}" -o "${{ github.event.inputs.file_path }}"
+          
+          # Verify file exists and check its size
+          ls -la "${{ github.event.inputs.file_path }}"
 
       - name: Commit and Push
         run: |
@@ -37,7 +45,11 @@ jobs:
           
           git add "${{ github.event.inputs.file_path }}"
           
+          # Check git status
+          git status
+          
           # Commit only if there are changes
           git commit -m "Add/Update ${{ github.event.inputs.file_path }} from URL" || exit 0
           
-          git push
+          # Push to the branch that triggered the workflow
+          git push origin HEAD
