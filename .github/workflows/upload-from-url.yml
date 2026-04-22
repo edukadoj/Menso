@@ -1,4 +1,4 @@
-name: Download and Upload via API
+name: Download and Upload via Git
 
 on:
   workflow_dispatch:
@@ -13,43 +13,31 @@ on:
 jobs:
   upload:
     runs-on: ubuntu-latest
+    
+    # Required to allow the Action to push to the repo
+    permissions:
+      contents: write 
+
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Download file
         run: |
-          curl -L "${{ github.event.inputs.file_url }}" -o file.bin
+          # Create the target directory if it doesn't exist
+          mkdir -p "$(dirname "${{ github.event.inputs.file_path }}")"
+          
+          # Download directly to the target path
+          curl -L "${{ github.event.inputs.file_url }}" -o "${{ github.event.inputs.file_path }}"
 
-      - name: Upload to GitHub using REST API
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and Push
         run: |
-          # Convert file to base64 (required by GitHub API)
-          CONTENT_BASE64=$(base64 -w 0 file.bin)
-
-          # API endpoint for the file
-          API_URL="https://api.github.com/repos/${{ github.repository }}/contents/${{ github.event.inputs.file_path }}"
-
-          # Check if file exists to get its SHA (required for updates)
-          SHA=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "$API_URL" | jq -r '.sha // ""')
-
-          # Build JSON payload
-          if [ -z "$SHA" ]; then
-            JSON=$(jq -n \
-              --arg message "Add file from URL" \
-              --arg content "$CONTENT_BASE64" \
-              --arg branch "${{ github.ref_name }}" \
-              '{message: $message, content: $content, branch: $branch}')
-          else
-            JSON=$(jq -n \
-              --arg message "Update file from URL" \
-              --arg content "$CONTENT_BASE64" \
-              --arg sha "$SHA" \
-              --arg branch "${{ github.ref_name }}" \
-              '{message: $message, content: $content, sha: $sha, branch: $branch}')
-          fi
-
-          # Upload the file
-          curl -X PUT \
-            -H "Authorization: token $GITHUB_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "$JSON" \
-            "$API_URL"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add "${{ github.event.inputs.file_path }}"
+          
+          # Commit only if there are changes
+          git commit -m "Add/Update ${{ github.event.inputs.file_path }} from URL" || exit 0
+          
+          git push
